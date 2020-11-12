@@ -7,30 +7,33 @@
     <div class="card">
       <div class="card-header">
         <span class="font-weight-bold">{{ client.client_fname }}</span>
-        <span class="font-weight-bold">{{ client.client_lname }}</span>
-        <span class="font-weight-bold">cell: {{ client.client_cell_phone }} | </span>
-        <span class="font-weight-bold">acct: {{ client.acct_number }} | </span>
-
-        <span class="font-muted">addr: {{ client.client_address_line_1 }} | </span>
-        <span class="font-muted">addr: {{ client.client_address_line_2 }} | </span>
-        <span class="font-muted-">city: {{ client.client_address_city }} | </span>
-        <span class="font-muted">st: {{ client.client_address_state }} | </span>
-        <span class="font-muted">zip: {{ client.client_address_zip }} | </span>
-        <span class="font-muted">email: {{ client.client_email }} | </span>
+        <span class="font-weight-bold">{{ client.client_lname }} | </span>
+        <span class="font-weight-bold">Cell Phone: {{ client.client_cell_phone }} | </span>
+        <span class="font-weight-bold">Account Number: {{ client.acct_number }} | </span>
+        <span class="font-muted">Address: {{ client.client_address_line_1 }} | </span>
+        <span class="font-muted">Company: {{ client.client_address_line_2 }} | </span>
+        <span class="font-muted-">City: {{ client.client_address_city }} | </span>
+        <span class="font-muted">State: {{ client.client_address_state }} | </span>
+        <span class="font-muted">Zip Code: {{ client.client_address_zip }} | </span>
+        <span class="font-muted">Email: {{ client.client_email }} | </span>
       </div>
       <div class="card-body">
-        <p>{{ client.notes }}</p>
+        <a href="{% url 'client_detail' client.pk %}">View Details </a> |
         <a href="{% url 'client_edit' client.pk %}">Edit</a> |
         <a href="{% url 'client_delete' client.pk %}">Delete</a> |
-		<a href="{% url 'comment_new' %}">Add Comment</a>
+		<a href="{% url 'vehicle_new' %}">Add Vehicle</a>
       </div>
       <div class="card-footer">
         {% for vehicle in client.vehicles.all %}
           <p>
             <span class="font-weight-bold">{{ vehicle.owner }} &middot;</span>
-            {{ vehicle }}
-			<a href="{% url 'vehicle_edit' comment.pk %}">Edit</a> |
-			<a href="{% url 'vehicle_delete' comment.pk %}">Delete</a>
+            {{ vehicle.vehicle_year }} |
+            {{ vehicle.vehicle_make }} |
+            {{ vehicle.vehicle_model }} |
+            {{ vehicle.vehicle_vin }}
+            <a href="{% url 'vehicle_detail' vehicle.pk %}">Records</a> |
+			<a href="{% url 'vehicle_edit' vehicle.pk %}">Edit</a> |
+			<a href="{% url 'vehicle_delete' vehicle.pk %}">Delete</a>
           </p>
         {% endfor %}
       </div>

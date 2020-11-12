@@ -49,7 +49,7 @@ class Vehicle(models.Model):
         return self.vehicle_vin
 
     def get_absolute_url(self):
-        return reverse('Client_list')
+        return reverse('client_list')
 
 class ServiceRecord(models.Model):
     vehicle_owner = models.ForeignKey(
