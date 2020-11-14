@@ -2,7 +2,8 @@
 
 {% block content %}
 <h2>Vehicle Records - {{ object.vehicle_owner.client_fname }} {{ object.vehicle_owner.client_lname }}
-  <a href="{%url 'client_new'%}" style="float: right;">+ New Service Record</a></h2>
+  <a href="{%url 'servicerecord_new' %}" style="float: right;" class="btn btn-primary btn-lg active"
+   role="button" aria-pressed="true">New Service Record</a></h2>
     <div>
       <h3>{{ object.vehicle_year }} {{ object.vehicle_make }} {{ object.vehicle_model }}</h3>
         {% for servicerecord in object.servicerecords.all %}
