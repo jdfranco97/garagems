@@ -28,6 +28,6 @@ urlpatterns = [
          VehicleDeleteView.as_view(), name='vehicle_delete'),
     path('<int:pk>/vehicle/edit/',
          VehicleUpdateView.as_view(), name='vehicle_edit'),
-    path('<int:pk>/',
+    path('<int:pk>/vehicle/detail',
          VehicleDetailView.as_view(), name='vehicle_detail'),
 ]

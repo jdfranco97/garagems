@@ -1,21 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="client-entry">
-  <h2>{{ object.vehicle_year }} {{ object.vehicle_make }} {{ object.vehicle_model }}</h2>
-    <div class="card-footer">
-      <h3>Vehicles</h3>
-        {% for servicerecord in vehicles.servicerecords.all %}
-          <p>
-            <span class="font-weight-bold">{{ servicerecord.service_date }} &middot;</span>
-            {{ servicerecord.service_amount }} |
-            {{ servicerecord.service_details }}
-			<a href="">Edit</a> |
-			<a href="">Delete</a>
-          </p>
-        {% endfor %}
+<h2>Vehicle Records - {{ object.vehicle_owner.client_fname }} {{ object.vehicle_owner.client_lname }}
+  <a href="{%url 'client_new'%}" style="float: right;">+ New Service Record</a></h2>
+    <div>
+      <h3>{{ object.vehicle_year }} {{ object.vehicle_make }} {{ object.vehicle_model }}</h3>
+        {% for servicerecord in object.servicerecords.all %}
+      <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold"> {{ servicerecord.service_date }}
       </div>
-  </div>
+      <div class="card-body">
+        <div class="card-header">
+          <span class="font-weight-bold"> Notes:
+        </div>
+        <div class="card-body">
+          {{servicerecord.service_details}}
+        </div>
+        <div class="card-footer">
+          <span class="font-weight-bold"> Invoice Amount: ${{servicerecord.service_amount}}
+        </div>
+      </div>
+      <div class="card-footer">
+            <a href="">Edit</a> |
+			<a href="">Delete</a> |
+            <a href="{% url 'client_detail' servicerecord.vehicle_owner.pk %}"> Return to Client</a>
+      </div>
+      </div>
 
-  <p>Back to <a href="{% url 'client_list' %}">All Clients</a>.</p>
+
+
+      </div>
+      <br>
+      {% endfor %}
+
+  </div>
 {% endblock content %}
+

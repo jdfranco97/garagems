@@ -23,10 +23,6 @@ class Client(models.Model):
     acct_number = models.CharField("Account Number",max_length=50,blank=False, null=True, default = random_string)
     notes = models.TextField()
     date = models.DateTimeField("Date",auto_now_add=True)
-    # author = models.ForeignKey(
-    #     get_user_model(),
-    #     on_delete=models.CASCADE,
-    #)
 
     def __str__(self):
         return self.client_fname
@@ -60,7 +56,7 @@ class ServiceRecord(models.Model):
     service_vehicle = models.ForeignKey(
         Vehicle,
         on_delete=models.CASCADE,
-        related_name='service_record',
+        related_name='servicerecords',
     )
     service_date = models.DateTimeField("Date",auto_now_add=True)
     service_amount = models.CharField("Amount", max_length=4, blank=False)
