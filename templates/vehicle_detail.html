@@ -22,8 +22,8 @@
         </div>
       </div>
       <div class="card-footer">
-            <a href="">Edit</a> |
-			<a href="">Delete</a> |
+            <a href="{% url 'servicerecord_edit' servicerecord.pk %}">Edit</a> |
+			<a href="{% url 'servicerecord_delete' servicerecord.pk %}">Delete</a> |
             <a href="{% url 'client_detail' servicerecord.vehicle_owner.pk %}"> Return to Client</a>
       </div>
       </div>

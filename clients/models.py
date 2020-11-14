@@ -66,4 +66,4 @@ class ServiceRecord(models.Model):
          return self.service_details
 
     def get_absolute_url(self):
-        return reverse('Client_list')
+        return reverse('client_list')

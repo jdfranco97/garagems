@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import models
 from .models import Client
 from .models import Vehicle
+from .models import ServiceRecord
 from django.urls import reverse_lazy
 
 class ClientListView(LoginRequiredMixin,ListView):
@@ -63,3 +64,24 @@ class VehicleDetailView(LoginRequiredMixin, DetailView):
     model = Vehicle
     template_name = 'vehicle_detail.html'
     login_url = 'login'
+
+class ServiceRecordCreateView(LoginRequiredMixin, CreateView):
+    model = ServiceRecord
+    template_name = 'servicerecord_new.html'
+    fields = ('vehicle_owner', 'service_vehicle', 'service_amount', 'service_details')
+    login_url = 'login'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ServiceRecordDeleteView(LoginRequiredMixin, DeleteView):
+    model = ServiceRecord
+    template_name = 'servicerecord_delete.html'
+    success_url = reverse_lazy('vehicle_detail.html')
+
+
+class ServiceRecordUpdateView(LoginRequiredMixin, UpdateView):
+    model = ServiceRecord
+    fields = ('vehicle_owner', 'service_vehicle', 'service_amount', 'service_details')
+    template_name = 'servicerecord_edit.html'

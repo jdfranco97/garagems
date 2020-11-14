@@ -10,6 +10,9 @@ from .views import (
     VehicleDeleteView,
     VehicleUpdateView,
     VehicleDetailView,
+    ServiceRecordCreateView,
+    ServiceRecordDeleteView,
+    ServiceRecordUpdateView,
 )
 
 
@@ -30,4 +33,9 @@ urlpatterns = [
          VehicleUpdateView.as_view(), name='vehicle_edit'),
     path('<int:pk>/vehicle/detail',
          VehicleDetailView.as_view(), name='vehicle_detail'),
+    path('new/vehicle/servicerecord', ServiceRecordCreateView.as_view(), name='servicerecord_new'),
+    path('<int:pk>/vehicle/servicerecord/delete/',
+         ServiceRecordDeleteView.as_view(), name='servicerecord_delete'),
+    path('<int:pk>/vehicle/servicerecord/edit/',
+         ServiceRecordUpdateView.as_view(), name='servicerecord_edit'),
 ]
