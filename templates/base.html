@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <a class="navbar-brand" href="{% url 'home' %}">
         {% load static %}
-        <img src="{% static 'garagems/images/baselogo.png' %}" width="200" height="70" class="d-inline-block align-center" alt="Repair System">
+        <img src="{% static "/images/baselogo.png" %}" width="200" height="70" class="d-inline-block align-center" alt="Repair System">
         Garage Management System</a>
       {% if user.is_authenticated %}
         <ul class="navbar-nav mr-auto">
@@ -38,8 +38,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right"
               aria-labelledby="userMenu">
-                <a class="dropdown-item" href="{% url 'password_change'
-                %}">Change password</a>
+                <a class="dropdown-item" href="{%url 'password_change' %}">Change password</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}">
                 Log Out</a>

@@ -68,7 +68,7 @@ class VehicleDetailView(LoginRequiredMixin, DetailView):
 class ServiceRecordCreateView(LoginRequiredMixin, CreateView):
     model = ServiceRecord
     template_name = 'servicerecord_new.html'
-    fields = ('vehicle_owner', 'service_vehicle', 'service_amount', 'service_details')
+    fields = ('vehicle_owner', 'service_vehicle', 'service_amount', 'service_details','service_date')
     login_url = 'login'
 
     def form_valid(self, form):
@@ -83,5 +83,5 @@ class ServiceRecordDeleteView(LoginRequiredMixin, DeleteView):
 
 class ServiceRecordUpdateView(LoginRequiredMixin, UpdateView):
     model = ServiceRecord
-    fields = ('vehicle_owner', 'service_vehicle', 'service_amount', 'service_details')
+    fields = ('vehicle_owner', 'service_vehicle', 'service_amount', 'service_details','service_date')
     template_name = 'servicerecord_edit.html'

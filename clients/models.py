@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
+from datetime import datetime
 
 
 def random_string():
@@ -58,7 +59,7 @@ class ServiceRecord(models.Model):
         on_delete=models.CASCADE,
         related_name='servicerecords',
     )
-    service_date = models.DateTimeField("Date",auto_now_add=True)
+    service_date = models.DateField("Date", default=datetime.now, null=False, blank=False)
     service_amount = models.CharField("Amount", max_length=4, blank=False)
     service_details = models.CharField("Service Details", max_length=140)
 
